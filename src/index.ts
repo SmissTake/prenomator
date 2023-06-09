@@ -10,8 +10,13 @@ const targets = [
   'title',
   'h1'
 ];
+const headers = {
+};
 
-const response = UFetch('/prenom/' + name);
+const body = {
+};
+
+const response = UFetch('/prenom/' + name, 'GET', headers, body);
 
 response.then((data) => {
   const results = UParse(data, ...targets);
