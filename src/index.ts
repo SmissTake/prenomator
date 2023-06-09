@@ -3,16 +3,15 @@ import UFetch from "./utils/UFetch";
 import { UInput } from "./utils/UInput";
 import UParse from "./utils/UParse";
 
-const response = UFetch('/prenom/Gwion');
-
-const ui = new UInput();
-const name = ui.prompt('What is your name? ');
-console.log(`Hello, ${name}!`);
+const nameInput = new UInput();
+const name = nameInput.prompt('What is your name? ');
 
 const targets = [
   'title',
   'h1'
 ];
+
+const response = UFetch('/prenom/' + name);
 
 response.then((data) => {
   const results = UParse(data, ...targets);
