@@ -9,8 +9,10 @@ const nameInput = new UInput();
 const name = nameInput.prompt('What is your name?', process.env.DEFAULT_NAME);
 
 const targets = {
-  'Résultat':'.meaning__notfound',
-  'Moyenne':'.section__greybold:nth-of-type(2)',
+  '1':'.meaning__notfound',
+  '2':'.meaning__notfound:nth-of-type(2)',
+  '3':'.meaning__notfound:nth-of-type(3)',
+  '4':'.meaning__notfound:nth-of-type(4)',
 };
 const headers = {
   'Content-Type': 'application/x-www-form-urlencoded'
