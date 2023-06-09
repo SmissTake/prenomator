@@ -10,5 +10,8 @@ const targets = [
 ];
 
 response.then((data) => {
-  UParse(data, ...targets);
+  const results = UParse(data, ...targets);
+  results.then((data) => {
+    console.log(data);
+  });
 });

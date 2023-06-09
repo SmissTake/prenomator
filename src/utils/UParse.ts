@@ -6,5 +6,5 @@ export default async function UParse(html: string, ...targets: string[]) {
     const text = dom.window.document.querySelector(target)?.textContent;
     return text;
   });
-  console.log(results);
+  return results;
 }
