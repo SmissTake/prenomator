@@ -7,4 +7,5 @@ export default function UResults(results: IResults) {
       console.log(`${key}: ${value}`);
     }
   }
+  console.log('----------------------')
 }
