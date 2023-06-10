@@ -1,19 +1,31 @@
 export default class CName {
 
-  total_votes: number;
-  current_average: number;
+  totalVotes: number;
+  currentAverage: number;
 
-  constructor(total_votes : number,  current_average : number) {
-    this.total_votes = total_votes;
-    this.current_average = current_average;
+  constructor(totalVotes: number, currentAverage: number) {
+    this.totalVotes = totalVotes;
+    this.currentAverage = currentAverage;
+  }
+
+  private getNewVote(targetAverage: number) {
+    if (this.currentAverage < targetAverage) {
+      return (10);
+    } 
+    else if (this.currentAverage > targetAverage) {
+      return (0);
+    }
+    else {
+      console.log("Targeted name already have an average note of " + targetAverage);
+      return;
+    }
   }
 
   /** Get the number of vote to get a new average
    * @param new_average The new average
-   * @param new_vote The new vote
-   * @returns The number of vote to get a new average
+   * @returns The number of vote to get a new averages
   */
-  public getVoteForNewAverage(target_average: number, new_vote: number) {
-    return ((this.total_votes * this.current_average - target_average * this.total_votes) / (target_average - new_vote));
+  public getVoteForNewAverage(targetAverage: number) {
+      return ((this.totalVotes * this.currentAverage - targetAverage * this.totalVotes) / (targetAverage - this.getNewVote(targetAverage)!));
   }
 }
