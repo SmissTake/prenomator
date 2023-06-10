@@ -9,6 +9,9 @@ const nameInput = new UInput();
 const name = nameInput.prompt('What is your name?', process.env.DEFAULT_NAME);
 
 
+const requestVoteInput = new UInput();
+const requestVote = requestVoteInput.prompt('What vote do you want to add ?', process.env.DEFAULT_VOTE);
+
 const requestNumberInput = new UInput();
 const requestNumber = requestNumberInput.prompt('How many vote do you want to add ?', process.env.DEFAULT_VOTE_NUMBER);
 
@@ -18,23 +21,55 @@ const targets = {
   '3':'.meaning__notfound:nth-of-type(3)',
   '4':'.meaning__notfound:nth-of-type(4)',
 };
+
 const headers = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
 
 const body = {
-  vote: 10
+  vote: requestVote
 };
 
+const username = process.env.LUMINATI_USERNAME;
+const password = process.env.LUMINATI_PASSWORD;
+const port = process.env.LUMINATI_PORT;
+const host = process.env.LUMINATI_PROXY;
+
+const proxy = {
+  host: host,
+  port: port,
+  auth: {
+    username: username,
+    password: password
+  }
+};
+
+
 const data = qs.stringify(body);
-
-for (let index = 0; index < parseInt(requestNumber); index++) {
-  const response = UFetch('/vote/' + name, 'POST', headers, data);
-
-  response.then((data) => {
-    const results = UParse(data, targets);
-    results.then((data:any) => {
-      UResults(data);
-    });
-  });
+const promises = [] as any;
+async function main() {
+  for (let index = 0; index < parseInt(requestNumber); index++) {
+    try {
+      const response = await UFetch('/vote/' + name, 'POST', headers, index % 2 === 0 ? proxy : null, data);
+      const results = await UParse(response, targets);
+      UResults(results as {[key: string]: string}, index);
+      promises.push(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
+
+Promise.all(promises)
+  .then((results) => {
+    results.forEach((data, index) => {
+      if (data) {
+        UResults(data as {[key: string]: string}, index);
+      }
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+main();
