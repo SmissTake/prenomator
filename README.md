@@ -1,5 +1,16 @@
 # Prenomator
 
+- [Prenomator](#prenomator)
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Launch](#launch)
+      - [Production](#production)
+      - [Development](#development)
+    - [Menu](#menu)
+  - [Issues](#issues)
+
+
 ## Description
 
 A simple tool to add as many votes as you want to a first name notation poll, with a estimator function to know how many votes to add for a specific grade.
@@ -14,13 +25,40 @@ A simple tool to add as many votes as you want to a first name notation poll, wi
 
 ## Usage
 
-1. Run the following command to start the script
+### Launch
+#### Production
+
+1. Build the script
+
+    ```bash
+    npm run build
+    ```
+
+2. Run the following command to start the script
+
+    ```bash
+    npm run start
+    ```
+
+3. Or do both in one command
+
+    ```bash
+    npm run prod
+    ```
+
+#### Development
+
+1. Run the following command to start the script in development mode
 
     ```bash
     npm run dev
     ```
+   
+There is an issue in development mode, see [Issues](#issues) for more information.
 
-2. Select the option you want to use in the menu.
+### Menu
+
+1. Select the option you want to use in the menu.
 
     ```
     [1] Calculate number of vote for a targeted average
@@ -30,7 +68,8 @@ A simple tool to add as many votes as you want to a first name notation poll, wi
     What do you want to do ? [1, 2, 0]:
     ```
 
-3. Follow the instructions
+2. Follow the instructions
+
 
 ## Issues
 
