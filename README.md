@@ -4,6 +4,7 @@
   - [Description](#description)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [Proxy](#proxy)
     - [Launch](#launch)
       - [Production](#production)
       - [Development](#development)
@@ -24,6 +25,10 @@ A simple tool to add as many votes as you want to a first name notation poll, wi
 2. Copy the `.env` to `.env.local` and fill the variables with your own credentials and the api url. You can also configure the default values for the votes.
 
 ## Usage
+
+### Proxy
+
+To avoid restricions from the website, the script will make one request out of two with a proxy. You can configure the proxy in your `.env.local` file. I use Luminate proxy, you can get a 7 days free trial. 
 
 ### Launch
 #### Production
