@@ -1,5 +1,5 @@
 require('dotenv').config({ path: '.env.local' });
-import CName from "./utils/CName";
+import CName from "./class/CName";
 import UFetch from "./utils/UFetch";
 import { UInput } from "./utils/UInput";
 import UParse from "./utils/UParse";
